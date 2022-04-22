@@ -10,7 +10,7 @@ function Modal({ show, close, noteData }) {
     <>
       {show ? (
         <div
-          className='modalContainer flex justify-center items-center fixed inset-0 bg-black/70'
+          className='z-10 modalContainer flex justify-center items-center fixed inset-0 bg-black/70'
           onClick={() => close()}
         >
           <div
