@@ -11,7 +11,7 @@ const createNote = asyncHandler(async (req, res) => {
 
   if (!body) {
     res.status(400)
-    throw new Error('Please add sone text')
+    throw new Error('Please add some text')
   }
 
   const note = await Note.create({
