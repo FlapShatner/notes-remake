@@ -1,8 +1,11 @@
+import { Navigate, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { CgClose, CgMore } from 'react-icons/cg'
+import { CgClose } from 'react-icons/cg'
+import { MdEditNote, MdWifiProtectedSetup } from 'react-icons/md'
 import Modal from './Modal'
 
 function Note(props) {
+  const navigate = useNavigate()
   // Modal state
   const [modal, setModal] = useState(false)
   const Toggle = () => setModal(!modal)
@@ -15,7 +18,11 @@ function Note(props) {
     Toggle()
   }
 
-  const handleClick = () => {
+  const handleEdit = () => {
+    navigate('/edit/' + props.note._id)
+  }
+
+  const handleDelete = () => {
     props.onDelete(props.note._id)
   }
 
@@ -27,15 +34,16 @@ function Note(props) {
         </div>
         {date !== 'Invalid Date' && <div className='text-sky-700 place-self-center font-karla basis-1/3'>{date}</div>}
       </div>
-      <div className='flex-row justify-between flex pb-2 pr-2'>
-        <div className='px-6 basis-5/6 font-karla truncate text-sky-700' onClick={openModal}>
+      <div className='flex-col flex '>
+        <div className='px-6 font-karla truncate text-sky-700' onClick={openModal}>
           {props.note.body}
         </div>
-
-        <div className='pt-2  cursor-pointer' onClick={handleClick}>
-          <CgClose className='text-sky-700 h-5 w-5' />
-        </div>
       </div>
+      <div className='flex flex-row self-end justify-end w-min pr-3 pb-1'>
+        <MdEditNote className='text-sky-700 h-6 w-6 cursor-pointer pb-1 mr-1' onClick={handleEdit} />
+        <CgClose className='text-sky-700 h-5 w-5 cursor-pointer' onClick={handleDelete} />
+      </div>
+
       <Modal show={modal} close={Toggle} noteData={noteData} />
     </div>
   )

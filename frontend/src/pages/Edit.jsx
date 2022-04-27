@@ -1,14 +1,23 @@
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import BackButton from '../components/BackButton'
 
-function Create() {
+function Edit() {
   const API_URL = 'http://localhost:5000/api/notes/'
 
   const navigate = useNavigate()
+  const params = useParams()
 
   const dateStr = new Date().toISOString().split('T', 1)
+
+  //   @TODO populate form with existing note
+
+  useEffect(() => {
+    axios.get(API_URL + params.id).then((response) => {
+      setFormData(response.data)
+    })
+  }, [])
 
   const [formData, setFormData] = useState({
     date: dateStr,
@@ -16,7 +25,7 @@ function Create() {
     body: '',
   })
 
-  const { date, title, body } = formData
+  const { title, body } = formData
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -28,7 +37,7 @@ function Create() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      let res = await axios.post(API_URL, formData)
+      let res = await axios.put(API_URL + params.id, formData)
     } catch (err) {
       console.log(err)
     }
@@ -47,7 +56,7 @@ function Create() {
               type='date'
               name='date'
               id='date'
-              value={date}
+              value={dateStr}
               onChange={handleChange}
             />
 
@@ -83,4 +92,4 @@ function Create() {
   )
 }
 
-export default Create
+export default Edit

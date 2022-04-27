@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom'
+import { useNavigate } from 'react-router-dom'
 import { MdEditNote } from 'react-icons/md'
 
 function Modal({ show, close, noteData }) {
@@ -25,11 +26,6 @@ function Modal({ show, close, noteData }) {
             </h2>
 
             <p className='font-karla p-6 pl-8 text-blue-900'>{body}</p>
-            <div className='flex justify-end pr-2 pb-2 '>
-              <button>
-                <MdEditNote className=' h-6 w-6 text-blue-700' />
-              </button>
-            </div>
           </div>
         </div>
       ) : null}
