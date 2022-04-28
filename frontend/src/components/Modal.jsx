@@ -15,17 +15,17 @@ function Modal({ show, close, noteData }) {
           onClick={() => close()}
         >
           <div
-            className='modal w-3/4 sm:w-1/2 min-h-fit bg-indigo-50 drop-shadow-md rounded-md'
+            className='modal z-20  w-3/4 sm:w-1/2 min-h-fit bg-gradient-to-r from-cyan-600 to-cyan-500 drop-shadow-md rounded-md'
             onClick={(e) => e.stopPropagation()}
           >
-            <p className='text-blue-900 text-right mr-4 mt-3 font-karla'>
+            <p className='text-orange-100 text-right mr-4 mt-3 font-karla'>
               {dateString !== 'Invalid Date' ? dateString : '\u00a0'}
             </p>
-            <h2 className='text-blue-900 leading-tight font-karla ml-12 w-max text-xl text-start overflow-hidden hover:overflow-auto'>
+            <h2 className='text-orange-100 leading-tight font-karla ml-12 w-max text-xl text-start overflow-hidden hover:overflow-auto'>
               {title}
             </h2>
 
-            <p className='font-karla p-6 pl-8 text-blue-900'>{body}</p>
+            <p className='font-karla p-6 pl-8 text-orange-100'>{body}</p>
           </div>
         </div>
       ) : null}
