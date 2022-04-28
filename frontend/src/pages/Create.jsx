@@ -43,7 +43,7 @@ function Create() {
 
           <form className='flex flex-col' onSubmit={handleSubmit}>
             <input
-              className='place-self-end text-sky-50 opacity-60 bg-sky-600 border-0 w-1/3 mb-2 rounded-sm'
+              className='place-self-end text-sky-50 opacity-60 mix-blend-luminosity bg-sky-400 border-0 w-1/3 mb-2 rounded-sm'
               type='date'
               name='date'
               id='date'
@@ -57,7 +57,7 @@ function Create() {
               id='title'
               value={title}
               onChange={handleChange}
-              className='block w-full px-0.5 border-0 bg-sky-600 opacity-60 focus:ring-0 indent-4 focus:opacity-80 text-white font-nunito font-md text-xl placeholder:text-sky-50 rounded-sm'
+              className='mix-blend-luminosity block w-full px-0.5 border-0 bg-sky-400 opacity-60 focus:ring-0 indent-4 focus:opacity-80 text-white font-nunito font-md text-xl placeholder:text-sky-50 rounded-sm'
               placeholder='Title'
             />
 
@@ -67,11 +67,11 @@ function Create() {
               value={body}
               required
               onChange={handleChange}
-              className='form-textarea mt-6 w-full border-0 bg-sky-600 opacity-60 focus:ring-0 focus:opacity-80 text-white font-nunito font-md text-lg placeholder:text-sky-50 rounded-sm'
+              className='form-textarea mt-6 w-full border-0 mix-blend-luminosity bg-sky-400 opacity-60 focus:ring-0 focus:opacity-80 text-white font-nunito font-md text-lg placeholder:text-sky-50 rounded-sm'
               rows='5'
             />
             <button
-              className='w-full bg-sky-700 opacity-80 hover:bg-sky-900 rounded-md py-2 mt-4 text-sky-50 font-quicksand'
+              className='w-full bg-sky-700 mix-blend-luminosity opacity-80 hover:bg-sky-900 rounded-md py-2 mt-4 text-sky-50 font-quicksand'
               type='submit'
             >
               Submit

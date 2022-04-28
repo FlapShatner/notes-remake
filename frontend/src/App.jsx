@@ -7,7 +7,7 @@ import Edit from './pages/Edit'
 
 function App() {
   return (
-    <div className='min-h-screen bg-gradient-to-tr from-sky-400 to-sky-200 '>
+    <div className='min-h-screen bg-gradient-to-tr from-indigo-500 to-amber-100 '>
       <div className='max-w-5xl mx-auto'>
         <Router>
           <Header />
