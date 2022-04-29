@@ -4,6 +4,7 @@ import Notes from './pages/notes'
 import Create from './pages/Create'
 import Header from './components/Header'
 import Edit from './pages/Edit'
+import Login from './pages/Login'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Notes />} />
             <Route path='/create' element={<Create />} />
+            <Route path='/login' element={<Login />} />
             <Route path='/edit/:id' element={<Edit />} />
           </Routes>
         </Router>
