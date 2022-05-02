@@ -7,7 +7,7 @@ const Note = require('../models/noteModel')
 // @access Public
 
 const createNote = asyncHandler(async (req, res) => {
-  const { date, title, body } = req.body
+  const { date, title, body, user } = req.body
 
   if (!body) {
     res.status(400)
@@ -18,6 +18,7 @@ const createNote = asyncHandler(async (req, res) => {
     date,
     title,
     body,
+    user,
   })
   res.status(201).json(note)
 })
@@ -27,7 +28,7 @@ const createNote = asyncHandler(async (req, res) => {
 // @access Public
 
 const getNotes = asyncHandler(async (req, res) => {
-  const notes = await Note.find()
+  const notes = await Note.find({ user: req.user.id })
 
   res.status(200).json(notes)
 })

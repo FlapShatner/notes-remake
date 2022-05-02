@@ -1,20 +1,34 @@
-import { useEffect, useState } from 'react'
-
+import { useEffect, useState, useContext } from 'react'
+import AuthContext from '../context/AuthProvider'
 import Note from '../components/Note'
-import axios from 'axios'
+import axios from '../api/axios'
 import NewNoteItem from '../components/NewNoteItem'
 
 function Notes() {
-  const API_URL = 'http://localhost:5000/api/notes/'
+  const API_URL = '/api/notes/'
 
+  const { auth } = useContext(AuthContext)
   const [notes, setNotes] = useState([])
   const [isDelete, setIsDelete] = useState(false)
   const [isError, setIsError] = useState(false)
 
   useEffect(() => {
-    axios.get(API_URL).then((response) => {
-      setNotes(response.data)
-    })
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${auth.token}`,
+        },
+      }
+      axios.get(API_URL, config).then((response) => {
+        setNotes(response.data)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+
+    // axios.get('/api/notes').then((response) => {
+    //   setNotes(response.data)
+    // })
   }, [])
 
   const onDelete = async (id) => {
