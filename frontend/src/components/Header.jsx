@@ -1,4 +1,4 @@
-import { CgNotes } from 'react-icons/cg'
+import { CgNotes, CgLogOut } from 'react-icons/cg'
 import { useNavigate, Link } from 'react-router-dom'
 
 function Header() {
@@ -21,12 +21,15 @@ function Header() {
       </Link>
 
       {user && (
-        <button
-          className=' bg-sky-600 mix-blend-luminosity opacity-80 hover:bg-sky-900 rounded-sm my-4 mr-4 px-2 text-sky-50 font-quicksand'
-          onClick={logout}
-        >
-          Logout
-        </button>
+        <div className='flex flex-col mr-3'>
+          <div className=' text-xs text-sky-50 opacity-80'>Signed in as {user.name}</div>
+          <button
+            className='flex  justify-center w-max bg-sky-600 mix-blend-luminosity opacity-80 hover:bg-sky-900 rounded-sm ml-auto my-2 mt-mr-4 px-1 text-sky-50 font-quicksand'
+            onClick={logout}
+          >
+            Sign Out
+          </button>
+        </div>
       )}
     </div>
   )

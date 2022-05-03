@@ -1,10 +1,13 @@
 import { useState, useContext } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from '../api/axios'
+import AlertError from '../components/AlertError'
 
 function Login() {
   const API_URL = '/api/users/'
   const navigate = useNavigate()
+
+  const [errMsg, setErrMsg] = useState('')
 
   const [formData, setFormData] = useState({
     email: '',
@@ -16,6 +19,7 @@ function Login() {
       ...prev,
       [e.target.name]: e.target.value,
     }))
+    setErrMsg('')
   }
 
   const handleSubmit = async (e) => {
@@ -30,6 +34,7 @@ function Login() {
       const message =
         (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
       console.log(message)
+      setErrMsg(message)
     }
   }
 
@@ -39,6 +44,7 @@ function Login() {
         <div className='flex justify-center '>
           <h2 className='font-nunito px-4 mb-4 text-2xl  text-white '>Login</h2>
         </div>
+        {errMsg && <AlertError errMsg={errMsg} />}
         <form onSubmit={handleSubmit} className='flex flex-col'>
           <input
             type='email'

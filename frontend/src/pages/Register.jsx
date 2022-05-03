@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import axios from '../api/axios'
+import AlertError from '../components/AlertError'
 
 function Register() {
   const API_URL = '/api/users/'
   const navigate = useNavigate()
+
+  const [errMsg, setErrMsg] = useState('')
 
   const user = JSON.parse(window.localStorage.getItem('user'))
 
@@ -28,6 +31,8 @@ function Register() {
       ...prev,
       [e.target.name]: e.target.value,
     }))
+
+    setErrMsg('')
   }
 
   const handleSubmit = async (e) => {
@@ -49,7 +54,7 @@ function Register() {
       } catch (error) {
         const message =
           (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
-        console.log(message)
+        setErrMsg(message)
       }
     }
   }
@@ -60,6 +65,7 @@ function Register() {
         <div className='flex justify-center '>
           <h2 className='font-nunito px-4 mb-4 text-2xl  text-white '>Register</h2>
         </div>
+        <AlertError errMsg={errMsg} />
         <form className='flex flex-col' onSubmit={handleSubmit}>
           <input
             type='text'
