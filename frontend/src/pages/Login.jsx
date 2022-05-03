@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import axios from '../api/axios'
 
 function Login() {
@@ -65,6 +65,11 @@ function Login() {
             Submit
           </button>
         </form>
+        <Link to={'/register'}>
+          <button className='w-full border-2 border-sky-600 mix-blend-luminosity opacity-80 hover:bg-sky-500 rounded-md py-1 mt-20 text-sky-100 font-quicksand'>
+            Register instead
+          </button>
+        </Link>
       </div>
     </div>
   )
