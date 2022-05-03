@@ -4,8 +4,8 @@ const { createNote, getNotes, deleteNote, editNote, getNote } = require('../cont
 
 const { protect } = require('../middleware/authMiddleware')
 
-router.route('/').post(protect, createNote).get(protect, getNotes)
+router.route('/').post(createNote).get(protect, getNotes)
 
-router.route('/:id').delete(protect, deleteNote).put(protect, editNote).get(protect, getNote)
+router.route('/:id').delete(deleteNote).put(editNote).get(getNote)
 
 module.exports = router

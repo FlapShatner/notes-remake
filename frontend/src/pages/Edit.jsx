@@ -1,10 +1,10 @@
-import axios from 'axios'
+import axios from '../api/axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import BackButton from '../components/BackButton'
 
 function Edit() {
-  const API_URL = 'http://localhost:5000/api/notes/'
+  const API_URL = '/api/notes/'
 
   const navigate = useNavigate()
   const params = useParams()

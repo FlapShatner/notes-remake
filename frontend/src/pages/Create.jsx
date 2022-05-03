@@ -1,13 +1,11 @@
 import axios from '../api/axios'
 import { useNavigate } from 'react-router-dom'
-import { useState, useContext } from 'react'
-import AuthContext from '../context/AuthProvider'
+import { useState } from 'react'
 import BackButton from '../components/BackButton'
 
 function Create() {
   const API_URL = '/api/notes/'
-
-  const { auth } = useContext(AuthContext)
+  const user = JSON.parse(window.localStorage.getItem('user'))
 
   const navigate = useNavigate()
 
@@ -17,7 +15,7 @@ function Create() {
     date: dateStr[0],
     title: '',
     body: '',
-    user: auth._id,
+    user: user._id,
   })
 
   const { date, title, body } = formData
