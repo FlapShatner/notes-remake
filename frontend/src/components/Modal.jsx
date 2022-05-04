@@ -1,6 +1,4 @@
 import ReactDOM from 'react-dom'
-import { useNavigate } from 'react-router-dom'
-import { MdEditNote } from 'react-icons/md'
 
 function Modal({ show, close, noteData }) {
   const { date, _id, title, body } = noteData

@@ -1,7 +1,7 @@
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { CgClose } from 'react-icons/cg'
-import { MdEditNote, MdWifiProtectedSetup } from 'react-icons/md'
+import { MdEditNote } from 'react-icons/md'
 import Modal from './Modal'
 
 function Note(props) {
